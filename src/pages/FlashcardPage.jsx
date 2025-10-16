@@ -34,7 +34,7 @@ export default function FlashcardPage() {
     // a loop to copy all elements except the one at `index`.
 
     // Update the state with the new array
-
+    setCards(cards.filter((_, i) => i !== index));
   }
 
   function handleAddCard(newCard) {
@@ -44,34 +44,33 @@ export default function FlashcardPage() {
     // Create a new array that includes all existing cards plus the new card
 
     // Update the state with the new array
-
+    setCards([...cards, newCard])
   }
 
   return (
-    <div className="flex flex-col items-center m-5">
-      {/* TODO: Add a title for the page here.
-        * Hint: we have a PageTitle component we used in the last section */}
+      <div className="flex flex-col items-center m-5">
+        {<PageTitle contents="Flashcards" />}
 
-      {
-        // If there are no cards, display a message saying so
-        cards.length === 0 ? (
-          <p>No flashcards available. Please add some!</p>
-        ) : (
-          // Map over the cards and render a Flashcard for each one
-          cards.map((card, index) => (
-            <Flashcard
-              key={index}
-              question={card.question}
-              answer={card.answer}
-              onDelete={() => deleteCard(index)}
-            />
-          ))
-        )
-      }
+        {
+          // If there are no cards, display a message saying so
+          cards.length === 0 ? (
+            <p>No flashcards available. Please add some!</p>
+          ) : (
+            // Map over the cards and render a Flashcard for each one
+            cards.map((card, index) => (
+              <Flashcard
+                key={index}
+                question={card.question}
+                answer={card.answer}
+                onDelete={() => deleteCard(index)}
+              />
+            ))
+          )
+        }
 
-      {/* AddCardModal component to add new cards */}
-      <AddCardModal onAddCard={handleAddCard} />
+        {/* AddCardModal component to add new cards */}
+        <AddCardModal onAddCard={handleAddCard} />
 
-    </div>
+      </div>
   )
 }

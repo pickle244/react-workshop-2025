@@ -31,7 +31,7 @@ export default function Flashcard({ question, answer, onDelete }) {
   return (
 
     /* TODO: showing an alert here isn't very useful if we actually want to flip the card */
-    <div className="w-80 h-48 cursor-pointer mt-5" onClick={() => alert("Flip the card!")}>
+    <div className="w-80 h-48 cursor-pointer mt-5" onClick={() => flipCard()}>
 
       {/* You shouldn't have to touch anything below this line. Most of this is CSS used to display the flip animation */}
       <div className={`relative w-full h-full transition-transform duration-700 transform-style-preserve-3d ${showAnswer ? 'rotate-y-180' : ''}`}>
